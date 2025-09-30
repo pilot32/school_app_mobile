@@ -109,7 +109,7 @@ class _DashboardBody extends StatelessWidget {
 
             //  padding only for widgets below
             Padding(
-              padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
+              padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -152,7 +152,7 @@ class _DashboardBody extends StatelessWidget {
                           child: _QuickAction(
                               icon: Icons.assignment_outlined, label: 'Attendance', onTap: () {
                                 Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (_)=> const AttendanceReportScreen() )
+                                  MaterialPageRoute(builder: (_)=> const AttendanceScreen() )
                                 );
                           })),
                       const SizedBox(width: 10),
@@ -207,7 +207,7 @@ class _DemoCard extends StatelessWidget {
         boxShadow: const [BoxShadow(color: Color(0x11000000), blurRadius: 6)],
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(title, style: const TextStyle(color: Colors.black54)),
+        Text(title, style: const TextStyle(color: Colors.black54,fontWeight: FontWeight.bold)),
         const SizedBox(height: 6),
         Text(value, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
       ]),
@@ -225,7 +225,7 @@ class _ScheduleSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          const Text('Today\'s Schedule', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+          const Text('Today\'s Schedule', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
           TextButton(onPressed: () { /* 📌 Backend: open full timetable */ }, child: const Text('View all')),
         ]),
         const SizedBox(height: 8),
@@ -325,10 +325,10 @@ class _AnnouncementSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text('Announcements',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600,)),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600,)),
             //SizedBox(width: 60),
             Align(
               alignment: Alignment.centerRight,
@@ -392,28 +392,51 @@ class _AnnouncementCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Material(
-        elevation: 3,
-        clipBehavior: Clip.antiAlias, // <--- ensures children/shadow are clipped to rounded shape
-
-
-        child: Container(
-          padding: const EdgeInsets.all(14),
-          decoration: BoxDecoration(
-            color: Colors.white,
-
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: const Color(0xFFE6E9EE)),
-            boxShadow: const [BoxShadow(color: Color(0x11000000), blurRadius: 6)],
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-              const SizedBox(height: 8),
-              Text(body, style: const TextStyle(color: Colors.black54)),
-            ],
-          ),
+      // sdded borderRadius to InkWell to make ripple effect follow rounded corners
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        padding: const EdgeInsets.all(14),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          //  moved borderRadius here from Material widget
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: const Color(0xFFE6E9EE)),
+          //  moved shadow here from Material widget - now shadow respects borderRadius
+          boxShadow: const [
+            BoxShadow(
+              color: Color(0x11000000),
+              blurRadius: 6,
+              offset: Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                // CHANGE 4: Added explicit fontSize for better control
+                fontSize: 16,
+              ),
+              // CHANGE 5: Added text constraints to prevent overflow
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              body,
+              style: const TextStyle(
+                color: Colors.black54,
+                // CHANGE 6: Added explicit fontSize for consistency
+                fontSize: 14,
+              ),
+              // CHANGE 7: Added text constraints for multi-line text
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
         ),
       ),
     );

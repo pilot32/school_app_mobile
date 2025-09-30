@@ -50,7 +50,7 @@ class DateTimeDisplayState extends State<DateTimeDisplay> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(_formatDate(_now),
-            style: const TextStyle(fontSize: 13, color: Colors.black54)),
+            style: const TextStyle(fontSize: 13, color: Colors.black54,fontWeight: FontWeight.w700)),
         const SizedBox(height: 4),
         Text(_formatTime(_now),
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
