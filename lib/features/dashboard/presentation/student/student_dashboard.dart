@@ -9,6 +9,7 @@ import 'package:school_app_mvp/features/dashboard/presentation/student/widgets/q
 import '../../../../data/models/student.dart';
 import '../../../core/student_provider.dart';
 import 'announcements_page.dart';
+import 'attendance_report.dart';
 
 class StudentDashboardScreen extends StatefulWidget {
   const StudentDashboardScreen({super.key});
@@ -149,7 +150,11 @@ class _DashboardBody extends StatelessWidget {
                   Row(
                     children: [Expanded(
                           child: _QuickAction(
-                              icon: Icons.assignment_outlined, label: 'Attendance', onTap: () {})),
+                              icon: Icons.assignment_outlined, label: 'Attendance', onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (_)=> const AttendanceReportScreen() )
+                                );
+                          })),
                       const SizedBox(width: 10),
                       Expanded(
                           child: _QuickAction(icon: Icons.chat_bubble_outline, label: 'Class Activity', onTap: () {
