@@ -8,11 +8,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   provider: ^6.0.5
   http: ^1.2.2
   shared_preferences: ^2.1.0
   flutter_svg: ^1.1.0
   syncfusion_flutter_pdfviewer: ^31.1.21
+  assets:
+    - assets/images/"dashbaoard_image.png"
 
 
 dev_dependencies:
@@ -21,3 +24,5 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/"dashbaoard_image.png"

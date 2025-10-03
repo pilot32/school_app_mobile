@@ -39,7 +39,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   }
 
   void _generateMockData() {
-    // 🔹 BACKEND INTEGRATION:
+    // BACKEND INTEGRATION:
     // Replace this with API call to get days in selected month
     // API endpoint: GET /api/attendance/calendar-days?month=9&year=2025
     // Response: [1, 2, 3, 4, 5, ...] // List of days in month with classes
