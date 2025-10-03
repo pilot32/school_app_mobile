@@ -10,6 +10,7 @@ import '../../../../data/models/student.dart';
 import '../../../core/student_provider.dart';
 import 'announcements_page.dart';
 import 'attendance_report.dart';
+import 'assignments_page.dart';
 
 class StudentDashboardScreen extends StatefulWidget {
   const StudentDashboardScreen({super.key});
@@ -39,7 +40,7 @@ class _StudentDashboardScreenState extends State<StudentDashboardScreen> {
 
     final List<Widget> _pages = [
       _DashboardBody(student: student),
-      const Center(child: Text('Assignments Page')), // replace later
+      const AssignmentsPage(),
       const Center(child: Text('Profile Page')),     // replace later
     ];
 

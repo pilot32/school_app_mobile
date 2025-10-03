@@ -161,7 +161,7 @@ class _PrincipalDashboardState extends State<PrincipalDashboardNew> {
 
       child: Container(
         decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage(assets))
+          // image: DecorationImage(image: AssetImage(assets))
         ),
         child: Scaffold(
 

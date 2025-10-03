@@ -81,28 +81,83 @@ class StudentProfileScreen extends StatelessWidget {
         child: Column(
           children: [
             // Top section with background + profile picture
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                Container(
-                  height: 150,
-                  decoration: BoxDecoration(
-                    color: Colors.blueAccent[100],
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(100),
-                      bottomRight: Radius.circular(100),
+            Container(
+              height: 150,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    height: 150,
+                    decoration: BoxDecoration(
+                      color: Colors.blueAccent[100],
+                      borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(100),
+                        bottomRight: Radius.circular(100),
+                      ),
                     ),
                   ),
-                ),
-                Positioned(
-                  bottom: -40,
-                  child: CircleAvatar(
-                    radius: 50,
-                    backgroundColor: Colors.white,
-                    backgroundImage: NetworkImage(studentData["profileImage"]),
+                  Positioned(
+                    bottom: 0,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 4,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 8,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: CircleAvatar(
+                        radius: 50,
+                        backgroundColor: Colors.grey[200],
+                        child: ClipOval(
+                          child: Image.network(
+                            studentData["profileImage"],
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Container(
+                                width: 100,
+                                height: 100,
+                                color: Colors.grey[300],
+                                child: Icon(
+                                  Icons.person,
+                                  size: 50,
+                                  color: Colors.grey[600],
+                                ),
+                              );
+                            },
+                            loadingBuilder: (context, child, loadingProgress) {
+                              if (loadingProgress == null) return child;
+                              return Container(
+                                width: 100,
+                                height: 100,
+                                color: Colors.grey[200],
+                                child: Center(
+                                  child: CircularProgressIndicator(
+                                    value: loadingProgress.expectedTotalBytes != null
+                                        ? loadingProgress.cumulativeBytesLoaded /
+                                            loadingProgress.expectedTotalBytes!
+                                        : null,
+                                    strokeWidth: 2,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(height: 60),
 
