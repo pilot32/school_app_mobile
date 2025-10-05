@@ -44,7 +44,7 @@ class LoginScreen extends StatelessWidget {
                       title: 'Teacher',
                       color: Color(0xFF2196F3),
                       onTap: () {
-                        Navigator.pushReplacementNamed(context, '/dashboard');
+                        Navigator.pushReplacementNamed(context, '/teacher-dashboard');
                       },
                     ),
                   ),
