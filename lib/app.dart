@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:school_app_mvp/theme/app_theme.dart';
 import 'features/auth/presentation/login_screen.dart';
-import 'features/dashboard/presentation/principal/principal_dashboard_new.dart';
-import 'features/dashboard/presentation/student/student_dashboard.dart';
 import 'features/dashboard/presentation/principal/principal_dashboard.dart';
+import 'features/dashboard/presentation/student/student_dashboard.dart';
 import 'features/dashboard/presentation/teacher/teacher_dashboard.dart';
 import 'features/core/teacher_provider.dart';
+import 'data/models/principal.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -25,7 +25,16 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (_) => const LoginScreen(),
           '/dashboard': (_) => const StudentDashboardScreen(),
-          '/principal-dashboard': (_) => const PrincipalDashboardNew(),
+          '/principal-dashboard': (_) => PrincipalDashboardScreen(
+            principal: Principal(
+              id: 'principal_001',
+              name: 'Dr. Sarah Johnson',
+              email: 'principal@school.com',
+              phone: '9876543210',
+              schoolName: 'Greenwood High School',
+              createdAt: DateTime.now().subtract(const Duration(days: 365)),
+            ),
+          ),
           '/teacher-dashboard': (_) => Consumer<TeacherProvider>(
             builder: (context, teacherProvider, child) {
               if (teacherProvider.teacher == null) {
