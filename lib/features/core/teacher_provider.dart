@@ -9,9 +9,9 @@ class TeacherProvider extends ChangeNotifier {
     // TODO: Replace with real teacher data from API
     _teacher = Teacher(
       id: 'teacher_001',
-      name: 'Dr. Sarah Johnson',
-      email: 'sarah.johnson@school.edu',
-      phone: '+1-555-0123',
+      name: 'Mr. Arjun Mehta',
+      email: 'arjun.mehta@greenwood.edu',
+      phone: '+91-98765 43210',
       department: 'Mathematics',
       subjects: ['Mathematics', 'Statistics'],
       classes: ['Class 10-A', 'Class 11-B', 'Class 9-C'],

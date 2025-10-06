@@ -69,26 +69,34 @@ class _PrincipalDashboardScreenState extends State<PrincipalDashboardScreen> {
       data: themed,
       child: Scaffold(
         body: _pages[_selectedIndex],
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: Colors.blue[600],
-          unselectedItemColor: Colors.grey[600],
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.dashboard),
-              label: 'Dashboard',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.admin_panel_settings),
-              label: 'Management',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
-          ],
+        bottomNavigationBar: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+          child: BottomNavigationBar(
+            
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            backgroundColor: Colors.white60,
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: Colors.blue[600],
+            unselectedItemColor: Colors.grey[600],
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.dashboard),
+                label: 'Dashboard',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.admin_panel_settings),
+                label: 'Management',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Profile',
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -168,7 +176,7 @@ class _DashboardBody extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            Row(
+            const Row(
               children: [
                 Expanded(
                   child: _StatCard(
@@ -178,7 +186,7 @@ class _DashboardBody extends StatelessWidget {
                     color: Colors.green,
                   ),
                 ),
-                const SizedBox(width: 16),
+                SizedBox(width: 16),
                 Expanded(
                   child: _StatCard(
                     title: 'Students',
@@ -190,7 +198,7 @@ class _DashboardBody extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 16),
-            Row(
+            const Row(
               children: [
                 Expanded(
                   child: _StatCard(
@@ -200,7 +208,7 @@ class _DashboardBody extends StatelessWidget {
                     color: Colors.orange,
                   ),
                 ),
-                const SizedBox(width: 16),
+                SizedBox(width: 16),
                 Expanded(
                   child: _StatCard(
                     title: 'Applications',
@@ -342,7 +350,7 @@ class _StatCard extends StatelessWidget {
             Text(
               title,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Colors.grey[600],
+                color: Colors.black,fontWeight: FontWeight.w600,
               ),
             ),
           ],

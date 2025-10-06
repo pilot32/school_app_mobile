@@ -12,15 +12,15 @@ class StudentProfileScreen extends StatelessWidget {
     // TODO: Replace mock data with actual student data fetched from backend
     // Backend engineer: Fetch student details using logged-in student's ID
     final Map<String, dynamic> studentData = {
-      "id": "165653",
-      "fullName": "Prajesh Shakya",
-      "grade": "9 'B'",
-      "rollNo": "21",
-      "address": "Prajesh Shakya",
-      "father'sName": "Prajesh Shakya",
-      "father'sContact": "984646464646",
-      "mother'sName": "Prajesh Shakya",
-      "mother'sContact": "984646464646",
+      "id": "GS-10A-001",
+      "fullName": "Aarav Sharma",
+      "grade": "10 'A'",
+      "rollNo": "001",
+      "address": "B-14, Green Park, New Delhi",
+      "father'sName": "Rajesh Sharma",
+      "father'sContact": "+91 98111 11111",
+      "mother'sName": "Priya Sharma",
+      "mother'sContact": "+91 98222 22222",
       "profileImage":
       "https://www.w3schools.com/w3images/avatar2.png", // TODO: Replace with image URL from backend
     };

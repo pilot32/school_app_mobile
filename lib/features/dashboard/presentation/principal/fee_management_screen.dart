@@ -50,6 +50,30 @@ class _FeeManagementScreenState extends State<FeeManagementScreen> {
     super.dispose();
   }
 
+  Widget _twoResponsive({required Widget left, required Widget right}) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth < 400) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              left,
+              const SizedBox(height: 16),
+              right,
+            ],
+          );
+        }
+        return Row(
+          children: [
+            Expanded(child: left),
+            const SizedBox(width: 16),
+            Expanded(child: right),
+          ],
+        );
+      },
+    );
+  }
+
   void _initializeFeeControllers() {
     for (FeeType type in FeeType.values) {
       _feeControllers[type] = TextEditingController();
@@ -177,52 +201,47 @@ class _FeeManagementScreenState extends State<FeeManagementScreen> {
                     const SizedBox(height: 16),
 
                     // Class and Section
-                    Row(
-                      children: [
-                        Expanded(
-                          child: DropdownButtonFormField<String>(
-                            value: _selectedClass,
-                            decoration: const InputDecoration(
-                              labelText: 'Class',
-                              prefixIcon: Icon(Icons.school),
-                              border: OutlineInputBorder(),
-                            ),
-                            items: _availableClasses.map((String classItem) {
-                              return DropdownMenuItem<String>(
-                                value: classItem,
-                                child: Text(classItem),
-                              );
-                            }).toList(),
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                _selectedClass = newValue!;
-                              });
-                            },
-                          ),
+                    _twoResponsive(
+                      left: DropdownButtonFormField<String>(
+                        value: _selectedClass,
+                        isExpanded: true,
+                        decoration: const InputDecoration(
+                          labelText: 'Class',
+                          prefixIcon: Icon(Icons.school),
+                          border: OutlineInputBorder(),
                         ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: DropdownButtonFormField<String>(
-                            value: _selectedSection,
-                            decoration: const InputDecoration(
-                              labelText: 'Section',
-                              prefixIcon: Icon(Icons.category),
-                              border: OutlineInputBorder(),
-                            ),
-                            items: _availableSections.map((String section) {
-                              return DropdownMenuItem<String>(
-                                value: section,
-                                child: Text('Section $section'),
-                              );
-                            }).toList(),
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                _selectedSection = newValue!;
-                              });
-                            },
-                          ),
+                        items: _availableClasses.map((String classItem) {
+                          return DropdownMenuItem<String>(
+                            value: classItem,
+                            child: Text(classItem, overflow: TextOverflow.ellipsis),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            _selectedClass = newValue!;
+                          });
+                        },
+                      ),
+                      right: DropdownButtonFormField<String>(
+                        value: _selectedSection,
+                        isExpanded: true,
+                        decoration: const InputDecoration(
+                          labelText: 'Section',
+                          prefixIcon: Icon(Icons.category),
+                          border: OutlineInputBorder(),
                         ),
-                      ],
+                        items: _availableSections.map((String section) {
+                          return DropdownMenuItem<String>(
+                            value: section,
+                            child: Text('Section $section', overflow: TextOverflow.ellipsis),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            _selectedSection = newValue!;
+                          });
+                        },
+                      ),
                     ),
                     const SizedBox(height: 16),
 

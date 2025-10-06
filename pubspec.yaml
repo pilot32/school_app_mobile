@@ -1,5 +1,5 @@
 name: school_app_mvp
-description: MVP of school app
+description:  A student management software
 publish_to: 'none'
 
 environment:
@@ -18,7 +18,7 @@ dependencies:
 
 flutter_native_splash:
   color: "#F7F7FB"         # Background color (your scaffoldBg maybe)
-  image: assets/logo.png   # Path to your logo
+  image: assets/images/logo.png   # Path to your logo
   android: true
   ios: true
   web: true
@@ -28,6 +28,28 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.0
   flutter_native_splash:
+  flutter_launcher_icons: ^0.13.1
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/logo.png
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: assets/images/logo.png
+  adaptive_icon_foreground: assets/images/logo.png
+  adaptive_icon_background: "#FFFFFF"
+  web:
+    generate: true
+    image_path: assets/images/logo.png
+    background_color: "#F7F7FB"
+    theme_color: "#1976D2"
+  windows:
+    generate: true
+    image_path: assets/images/logo.png
+  macos:
+    generate: true
+    image_path: assets/images/logo.png
 

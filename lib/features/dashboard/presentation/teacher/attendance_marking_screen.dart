@@ -25,11 +25,11 @@ class _AttendanceMarkingScreenState extends State<AttendanceMarkingScreen> {
 
   // Sample students data - replace with API call
   final List<Student> _students = [
-    Student(name: 'John Doe', studentClass: '10-A', rollNo: '001'),
-    Student(name: 'Jane Smith', studentClass: '10-A', rollNo: '002'),
-    Student(name: 'Mike Johnson', studentClass: '10-A', rollNo: '003'),
-    Student(name: 'Sarah Wilson', studentClass: '10-A', rollNo: '004'),
-    Student(name: 'David Brown', studentClass: '10-A', rollNo: '005'),
+    Student(name: 'Aarav Sharma', studentClass: '10-A', rollNo: '001'),
+    Student(name: 'Diya Patel', studentClass: '10-A', rollNo: '002'),
+    Student(name: 'Rohan Gupta', studentClass: '10-A', rollNo: '003'),
+    Student(name: 'Ananya Iyer', studentClass: '10-A', rollNo: '004'),
+    Student(name: 'Kabir Singh', studentClass: '10-A', rollNo: '005'),
   ];
 
   @override

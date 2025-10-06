@@ -141,6 +141,8 @@ class _DashboardBody extends StatelessWidget {
                     ),
                     Text(
                       teacher.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.plusJakartaSans(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
@@ -161,6 +163,8 @@ class _DashboardBody extends StatelessWidget {
           const SizedBox(height: 16),
           Text(
             '${teacher.department} • ${teacher.subjects.join(', ')}',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: GoogleFonts.plusJakartaSans(
               fontWeight: FontWeight.w600,
               fontSize: 14,
@@ -263,7 +267,7 @@ class _DashboardBody extends StatelessWidget {
           crossAxisCount: 2,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          childAspectRatio: 1.5,
+          childAspectRatio: 1.3,
           crossAxisSpacing: 12,
           mainAxisSpacing: 12,
           children: [
@@ -320,12 +324,15 @@ class _DashboardBody extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Icon(icon, color: color, size: 32),
               const SizedBox(height: 8),
               Text(
                 title,
                 textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
                 style: GoogleFonts.plusJakartaSans(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
@@ -385,6 +392,8 @@ class _DashboardBody extends StatelessWidget {
               children: [
                 Text(
                   title,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style:  GoogleFonts.plusJakartaSans(fontSize: 14, fontWeight: FontWeight.w600),
                 ),
                 Text(
@@ -451,10 +460,14 @@ class _DashboardBody extends StatelessWidget {
               children: [
                 Text(
                   subject,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style:  GoogleFonts.plusJakartaSans(fontSize: 14, fontWeight: FontWeight.w600),
                 ),
                 Text(
                   '$className • $room',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.plusJakartaSans(fontSize: 12, color: Colors.grey[600],fontWeight:FontWeight.w600),
                 ),
               ],
@@ -462,6 +475,8 @@ class _DashboardBody extends StatelessWidget {
           ),
           Text(
             time,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: GoogleFonts.plusJakartaSans(fontSize: 12, color: Colors.blueAccent[100], fontWeight: FontWeight.w600),
           ),
         ],
