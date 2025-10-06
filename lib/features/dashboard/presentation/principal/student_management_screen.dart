@@ -47,6 +47,30 @@ class _StudentManagementScreenState extends State<StudentManagementScreen> {
     super.dispose();
   }
 
+  Widget _twoResponsive({required Widget left, required Widget right}) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth < 400) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              left,
+              const SizedBox(height: 16),
+              right,
+            ],
+          );
+        }
+        return Row(
+          children: [
+            Expanded(child: left),
+            const SizedBox(width: 16),
+            Expanded(child: right),
+          ],
+        );
+      },
+    );
+  }
+
   void _loadTransferRequests() {
     // Sample transfer requests - in a real app, this would come from your backend
     _transferRequests = [
@@ -95,11 +119,12 @@ class _StudentManagementScreenState extends State<StudentManagementScreen> {
           children: [
             Container(
               color: Colors.blue[600],
-              child: const TabBar(
+              child: TabBar(
+                isScrollable: true,
                 labelColor: Colors.white,
                 unselectedLabelColor: Colors.white70,
                 indicatorColor: Colors.white,
-                tabs: [
+                tabs: const [
                   Tab(text: 'Transfer Student'),
                   Tab(text: 'Pending Requests'),
                   Tab(text: 'All Requests'),
@@ -161,102 +186,88 @@ class _StudentManagementScreenState extends State<StudentManagementScreen> {
                     const SizedBox(height: 16),
 
                     // Current Class and Section
-                    Row(
-                      children: [
-                        Expanded(
-                          child: DropdownButtonFormField<String>(
-                            value: _currentClass,
-                            decoration: const InputDecoration(
-                              labelText: 'Current Class',
-                              prefixIcon: Icon(Icons.school),
-                              border: OutlineInputBorder(),
-                            ),
-                            items: _availableClasses.map((String classItem) {
-                              return DropdownMenuItem<String>(
-                                value: classItem,
-                                child: Text(classItem),
-                              );
-                            }).toList(),
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                _currentClass = newValue!;
-                              });
-                            },
-                          ),
+                    _twoResponsive(
+                      left: DropdownButtonFormField<String>(
+                        value: _currentClass,
+                        decoration: const InputDecoration(
+                          labelText: 'Current Class',
+                          prefixIcon: Icon(Icons.school),
+                          border: OutlineInputBorder(),
                         ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: DropdownButtonFormField<String>(
-                            value: _currentSection,
-                            decoration: const InputDecoration(
-                              labelText: 'Current Section',
-                              prefixIcon: Icon(Icons.category),
-                              border: OutlineInputBorder(),
-                            ),
-                            items: _availableSections.map((String section) {
-                              return DropdownMenuItem<String>(
-                                value: section,
-                                child: Text('Section $section'),
-                              );
-                            }).toList(),
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                _currentSection = newValue!;
-                              });
-                            },
-                          ),
+                        items: _availableClasses.map((String classItem) {
+                          return DropdownMenuItem<String>(
+                            value: classItem,
+                            child: Text(classItem),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            _currentClass = newValue!;
+                          });
+                        },
+                      ),
+                      right: DropdownButtonFormField<String>(
+                        value: _currentSection,
+                        decoration: const InputDecoration(
+                          labelText: 'Current Section',
+                          prefixIcon: Icon(Icons.category),
+                          border: OutlineInputBorder(),
                         ),
-                      ],
+                        items: _availableSections.map((String section) {
+                          return DropdownMenuItem<String>(
+                            value: section,
+                            child: Text('Section $section'),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            _currentSection = newValue!;
+                          });
+                        },
+                      ),
                     ),
                     const SizedBox(height: 16),
 
                     // New Class and Section
-                    Row(
-                      children: [
-                        Expanded(
-                          child: DropdownButtonFormField<String>(
-                            value: _newClass,
-                            decoration: const InputDecoration(
-                              labelText: 'New Class',
-                              prefixIcon: Icon(Icons.school),
-                              border: OutlineInputBorder(),
-                            ),
-                            items: _availableClasses.map((String classItem) {
-                              return DropdownMenuItem<String>(
-                                value: classItem,
-                                child: Text(classItem),
-                              );
-                            }).toList(),
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                _newClass = newValue!;
-                              });
-                            },
-                          ),
+                    _twoResponsive(
+                      left: DropdownButtonFormField<String>(
+                        value: _newClass,
+                        decoration: const InputDecoration(
+                          labelText: 'New Class',
+                          prefixIcon: Icon(Icons.school),
+                          border: OutlineInputBorder(),
                         ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: DropdownButtonFormField<String>(
-                            value: _newSection,
-                            decoration: const InputDecoration(
-                              labelText: 'New Section',
-                              prefixIcon: Icon(Icons.category),
-                              border: OutlineInputBorder(),
-                            ),
-                            items: _availableSections.map((String section) {
-                              return DropdownMenuItem<String>(
-                                value: section,
-                                child: Text('Section $section'),
-                              );
-                            }).toList(),
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                _newSection = newValue!;
-                              });
-                            },
-                          ),
+                        items: _availableClasses.map((String classItem) {
+                          return DropdownMenuItem<String>(
+                            value: classItem,
+                            child: Text(classItem),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            _newClass = newValue!;
+                          });
+                        },
+                      ),
+                      right: DropdownButtonFormField<String>(
+                        value: _newSection,
+                        decoration: const InputDecoration(
+                          labelText: 'New Section',
+                          prefixIcon: Icon(Icons.category),
+                          border: OutlineInputBorder(),
                         ),
-                      ],
+                        items: _availableSections.map((String section) {
+                          return DropdownMenuItem<String>(
+                            value: section,
+                            child: Text('Section $section'),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            _newSection = newValue!;
+                          });
+                        },
+                      ),
                     ),
                     const SizedBox(height: 16),
 

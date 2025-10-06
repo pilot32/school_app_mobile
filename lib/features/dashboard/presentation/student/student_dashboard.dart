@@ -175,9 +175,9 @@ class _DashboardBody extends StatelessWidget {
                                 MaterialPageRoute(builder: (_)=>const ClassroomMvpScreen()));
                           })),
                       const SizedBox(width: 10),
-                      Expanded(
-                          child: _QuickAction(
-                              icon: Icons.question_answer, label: 'Ask Doubt', onTap: () {})),
+                      // Expanded(
+                      //     child: _QuickAction(
+                      //         icon: Icons.question_answer, label: 'Ask Doubt', onTap: () {})),
                     ],
                   ),
                   const SizedBox(height: 40),

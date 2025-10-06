@@ -14,12 +14,20 @@ dependencies:
   shared_preferences: ^2.1.0
   flutter_svg: ^1.1.0
   syncfusion_flutter_pdfviewer: ^31.1.21
- 
+  google_fonts: ^6.2.1
 
+flutter_native_splash:
+  color: "#F7F7FB"         # Background color (your scaffoldBg maybe)
+  image: assets/logo.png   # Path to your logo
+  android: true
+  ios: true
+  web: true
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  flutter_native_splash:
 flutter:
   uses-material-design: true
+

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../../data/models/teacher.dart';
 import 'attendance_marking_screen.dart';
 import 'announcement_screen.dart';
@@ -42,7 +43,7 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.blue[600],
+        selectedItemColor: Colors.blueAccent[100],
         unselectedItemColor: Colors.grey[600],
         items: const [
           BottomNavigationBarItem(
@@ -88,7 +89,7 @@ class _DashboardBody extends StatelessWidget {
                   _buildRecentActivity(),
                   const SizedBox(height: 20),
                   _buildUpcomingClasses(),
-                  const SizedBox(height: 80), // Add bottom padding for navigation bar
+                  const SizedBox(height: 20), // Add bottom padding for navigation bar
                 ],
               ),
             ),
@@ -103,7 +104,7 @@ class _DashboardBody extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [Colors.blue[600]!, Colors.blue[400]!],
+          colors: [Colors.blue[400]!, Colors.blueAccent[100]!],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -121,7 +122,7 @@ class _DashboardBody extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blue[600],
+                    color: Colors.blueAccent[100],
                   ),
                 ),
               ),
@@ -132,16 +133,17 @@ class _DashboardBody extends StatelessWidget {
                   children: [
                     Text(
                       'Welcome back,',
-                      style: TextStyle(
+                      style: GoogleFonts.plusJakartaSans(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,// 👈 Light 300
                         fontSize: 14,
-                        color: Colors.white.withOpacity(0.9),
                       ),
                     ),
                     Text(
                       teacher.name,
-                      style: const TextStyle(
+                      style: GoogleFonts.plusJakartaSans(
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w600,
                         color: Colors.white,
                       ),
                     ),
@@ -152,14 +154,15 @@ class _DashboardBody extends StatelessWidget {
                 onPressed: () {
                   // TODO: Implement notifications
                 },
-                icon: const Icon(Icons.notifications, color: Colors.white),
+                icon: Icon(Icons.notifications, color: Colors.white),
               ),
             ],
           ),
           const SizedBox(height: 16),
           Text(
             '${teacher.department} • ${teacher.subjects.join(', ')}',
-            style: TextStyle(
+            style: GoogleFonts.plusJakartaSans(
+              fontWeight: FontWeight.w600,
               fontSize: 14,
               color: Colors.white.withOpacity(0.9),
             ),
@@ -180,14 +183,14 @@ class _DashboardBody extends StatelessWidget {
           children: [
             Row(
               children: [
-                Icon(Icons.school, color: Colors.blue[600], size: 24),
+                Icon(Icons.school, color: Colors.blueAccent[100], size: 24),
                 const SizedBox(width: 12),
                 Text(
                   'Today\'s Overview',
-                  style: TextStyle(
+                  style: GoogleFonts.plusJakartaSans(
                     fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue[600],
+                    fontWeight: FontWeight.w600,
+                    color: Colors.blueAccent[100],
                   ),
                 ),
               ],
@@ -220,21 +223,22 @@ class _DashboardBody extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Icon(icon, color: Colors.blue[600], size: 24),
+          Icon(icon, color: Colors.blueAccent[100], size: 24),
           const SizedBox(height: 8),
           Text(
             value,
-            style: TextStyle(
+            style: GoogleFonts.plusJakartaSans(
               fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.blue[600],
+              fontWeight: FontWeight.w600,
+              color: Colors.blueAccent[100],
             ),
           ),
           Text(
             label,
-            style: TextStyle(
+            style: GoogleFonts.plusJakartaSans(
               fontSize: 12,
-              color: Colors.blue[600],
+              fontWeight: FontWeight.w600,
+              color: Colors.blueAccent[100],
             ),
           ),
         ],
@@ -248,9 +252,9 @@ class _DashboardBody extends StatelessWidget {
       children: [
         Text(
           'Quick Actions',
-          style: TextStyle(
+          style: GoogleFonts.plusJakartaSans(
             fontSize: 20,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w600,
             color: Colors.grey[800],
           ),
         ),
@@ -322,7 +326,7 @@ class _DashboardBody extends StatelessWidget {
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: GoogleFonts.plusJakartaSans(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: Colors.grey[800],
@@ -341,9 +345,9 @@ class _DashboardBody extends StatelessWidget {
       children: [
         Text(
           'Recent Activity',
-          style: TextStyle(
+          style: GoogleFonts.plusJakartaSans(
             fontSize: 20,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w600,
             color: Colors.grey[800],
           ),
         ),
@@ -373,7 +377,7 @@ class _DashboardBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         children: [
-          Icon(icon, color: Colors.blue[600], size: 20),
+          Icon(icon, color: Colors.blueAccent[100], size: 20),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
@@ -381,11 +385,11 @@ class _DashboardBody extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                  style:  GoogleFonts.plusJakartaSans(fontSize: 14, fontWeight: FontWeight.w600),
                 ),
                 Text(
                   time,
-                  style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                  style: GoogleFonts.plusJakartaSans(fontSize: 12, color: Colors.grey[600],fontWeight: FontWeight.w600),
                 ),
               ],
             ),
@@ -401,9 +405,10 @@ class _DashboardBody extends StatelessWidget {
       children: [
         Text(
           'Upcoming Classes',
-          style: TextStyle(
+          style: GoogleFonts.plusJakartaSans(
             fontSize: 20,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w600
+            ,
             color: Colors.grey[800],
           ),
         ),
@@ -437,7 +442,7 @@ class _DashboardBody extends StatelessWidget {
               color: Colors.blue[100],
               borderRadius: BorderRadius.circular(8),
             ),
-            child: Icon(Icons.book, color: Colors.blue[600], size: 20),
+            child: Icon(Icons.book, color: Colors.blueAccent[100], size: 20),
           ),
           const SizedBox(width: 12),
           Expanded(
@@ -446,18 +451,18 @@ class _DashboardBody extends StatelessWidget {
               children: [
                 Text(
                   subject,
-                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                  style:  GoogleFonts.plusJakartaSans(fontSize: 14, fontWeight: FontWeight.w600),
                 ),
                 Text(
                   '$className • $room',
-                  style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                  style: GoogleFonts.plusJakartaSans(fontSize: 12, color: Colors.grey[600],fontWeight:FontWeight.w600),
                 ),
               ],
             ),
           ),
           Text(
             time,
-            style: TextStyle(fontSize: 12, color: Colors.blue[600], fontWeight: FontWeight.w500),
+            style: GoogleFonts.plusJakartaSans(fontSize: 12, color: Colors.blueAccent[100], fontWeight: FontWeight.w600),
           ),
         ],
       ),
@@ -565,7 +570,7 @@ class _ClassesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Classes'),
-        backgroundColor: Colors.blue[600],
+        backgroundColor: Colors.blueAccent[100],
         foregroundColor: Colors.white,
       ),
       body: ListView.builder(
@@ -578,7 +583,7 @@ class _ClassesPage extends StatelessWidget {
             child: ListTile(
               leading: CircleAvatar(
                 backgroundColor: Colors.blue[100],
-                child: Icon(Icons.class_, color: Colors.blue[600]),
+                child: Icon(Icons.class_, color: Colors.blueAccent[100]),
               ),
               title: Text(className),
               subtitle: Text('Subjects: ${teacher.subjects.join(', ')}'),
@@ -603,7 +608,7 @@ class _ClassesPage extends StatelessWidget {
           children: [
             Text(
               className,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style:  GoogleFonts.plusJakartaSans(fontSize: 20, fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 20),
             _buildClassAction('Mark Attendance', Icons.check_circle, () {
@@ -669,7 +674,7 @@ class _ClassesPage extends StatelessWidget {
 
   Widget _buildClassAction(String title, IconData icon, VoidCallback onTap) {
     return ListTile(
-      leading: Icon(icon, color: Colors.blue[600]),
+      leading: Icon(icon, color: Colors.blueAccent[100]),
       title: Text(title),
       onTap: onTap,
     );
@@ -686,8 +691,17 @@ class _ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
-        backgroundColor: Colors.blue[600],
+        backgroundColor: Colors.blueAccent[100],
         foregroundColor: Colors.white,
+        actions: [
+          IconButton(onPressed: (){
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              '/',
+                  (route) => false,
+            );
+          }, icon: const Icon(Icons.logout,color: Colors.white), tooltip: 'Logout',)
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
@@ -703,21 +717,21 @@ class _ProfilePage extends StatelessWidget {
                       backgroundColor: Colors.blue[100],
                       child: Text(
                         teacher.name.isNotEmpty ? teacher.name[0].toUpperCase() : 'T',
-                        style: TextStyle(
+                        style: GoogleFonts.plusJakartaSans(
                           fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue[600],
+                          fontWeight: FontWeight.w600,
+                          color: Colors.blueAccent[100],
                         ),
                       ),
                     ),
                     const SizedBox(height: 16),
                     Text(
                       teacher.name,
-                      style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      style:  GoogleFonts.plusJakartaSans(fontSize: 24, fontWeight: FontWeight.w600),
                     ),
                     Text(
                       teacher.department,
-                      style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                      style: GoogleFonts.plusJakartaSans(fontSize: 16, color: Colors.grey[600],fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),
@@ -732,9 +746,9 @@ class _ProfilePage extends StatelessWidget {
                   children: [
                     Text(
                       'Contact Information',
-                      style: TextStyle(
+                      style: GoogleFonts.plusJakartaSans(
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w600,
                         color: Colors.grey[800],
                       ),
                     ),
@@ -754,9 +768,9 @@ class _ProfilePage extends StatelessWidget {
                   children: [
                     Text(
                       'Teaching Details',
-                      style: TextStyle(
+                      style: GoogleFonts.plusJakartaSans(
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w600,
                         color: Colors.grey[800],
                       ),
                     ),
@@ -767,7 +781,7 @@ class _ProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 80), // Add bottom padding for navigation bar
+            const SizedBox(height: 20), // Add bottom padding for navigation bar
           ],
         ),
       ),
@@ -779,7 +793,7 @@ class _ProfilePage extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         children: [
-          Icon(icon, color: Colors.blue[600], size: 20),
+          Icon(icon, color: Colors.blueAccent[100], size: 20),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
@@ -787,11 +801,11 @@ class _ProfilePage extends StatelessWidget {
               children: [
                 Text(
                   label,
-                  style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                  style: GoogleFonts.plusJakartaSans(fontSize: 12, color: Colors.grey[600],fontWeight: FontWeight.w600),
                 ),
                 Text(
                   value,
-                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                  style:  GoogleFonts.plusJakartaSans(fontSize: 14, fontWeight: FontWeight.w600),
                 ),
               ],
             ),

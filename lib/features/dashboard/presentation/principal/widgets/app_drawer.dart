@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import '../../../../data/models/principal.dart';
+import '../../../../../data/models/principal.dart';
+//import '../../../../data/models/principal.dart';
 import '../add_section_screen.dart';
 import '../teacher_onboarding_screen.dart';
 import '../student_application_form_screen.dart';
 import '../teacher_assignment_screen.dart';
 import '../student_management_screen.dart';
-import '../announcements_management_screen.dart';
-import '../fees_management_screen.dart';
+import '../announcement_management_screen.dart';
+import '../fee_management_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   final Principal principal;
@@ -90,13 +91,13 @@ class AppDrawer extends StatelessWidget {
           _buildDrawerItem(icon: Icons.campaign, title: 'Manage Announcements', onTap: () {
             Navigator.of(context).pop();
             Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => AnnouncementsManagementScreen(principal: principal)),
+              MaterialPageRoute(builder: (_) => AnnouncementManagementScreen(principal: principal)),
             );
           }),
           _buildDrawerItem(icon: Icons.attach_money, title: 'Manage Fees', onTap: () {
             Navigator.of(context).pop();
             Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => FeesManagementScreen(principal: principal)),
+              MaterialPageRoute(builder: (_) => FeeManagementScreen(principal: principal)),
             );
           }),
           _buildDrawerItem(icon: Icons.add_box, title: 'Add Section', onTap: () {
