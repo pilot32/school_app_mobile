@@ -75,22 +75,22 @@ class _DashboardBody extends StatelessWidget {
       {
         'time': '09:00 AM',
         'title': 'Mathematics',
-        'room': 'Ms. Sarah Johnson • Room 101'
+        'room': 'Mr. Arjun Mehta • Room 101'
       },
       {
         'time': '10:30 AM',
         'title': 'English',
-        'room': 'Mr. Savita bhabhi • Room 205'
+        'room': 'Ms. Neha Kapoor • Room 205'
       },
       {
         'time': '12:00 PM',
         'title': 'Science',
-        'room': 'Dr. kallu kalia • Lab 1'
+        'room': 'Dr. Rakesh Menon • Lab 1'
       },
       {
         'time': '02:00 PM',
         'title': 'History',
-        'room': 'Mr. Horny geeta • Room 103'
+        'room': 'Ms. Anjali Rao • Room 103'
       },
     ];
 
@@ -100,8 +100,8 @@ class _DashboardBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             //  appBar stays full-width
-            StudentAppBar(
-              portalTitle: 'Name of the school',
+              StudentAppBar(
+              portalTitle: 'Greenwood International School',
               portalSubtitle: 'Track your academic progress and stay informed',
               studentName: student!.name,
               studentClass: student!.studentClass,
@@ -175,9 +175,9 @@ class _DashboardBody extends StatelessWidget {
                                 MaterialPageRoute(builder: (_)=>const ClassroomMvpScreen()));
                           })),
                       const SizedBox(width: 10),
-                      Expanded(
-                          child: _QuickAction(
-                              icon: Icons.question_answer, label: 'Ask Doubt', onTap: () {})),
+                      // Expanded(
+                      //     child: _QuickAction(
+                      //         icon: Icons.question_answer, label: 'Ask Doubt', onTap: () {})),
                     ],
                   ),
                   const SizedBox(height: 40),

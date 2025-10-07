@@ -73,16 +73,26 @@ class _MarksManagementScreenState extends State<MarksManagementScreen> {
         children: [
           Icon(Icons.class_, color: Colors.blue[600]),
           const SizedBox(width: 8),
-          Text(
-            'Class: ${widget.targetClass}',
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+          Expanded(
+            child: Text(
+              'Class: ${widget.targetClass}',
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              softWrap: false,
+            ),
           ),
           const SizedBox(width: 16),
           Icon(Icons.book, color: Colors.blue[600]),
           const SizedBox(width: 8),
-          Text(
-            'Subject: ${widget.subject}',
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+          Expanded(
+            child: Text(
+              'Subject: ${widget.subject}',
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              softWrap: false,
+            ),
           ),
         ],
       ),

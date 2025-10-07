@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../../data/models/principal.dart';
 import 'teacher_onboarding_screen.dart';
 import 'student_application_form_screen.dart';
@@ -36,28 +37,67 @@ class _PrincipalDashboardScreenState extends State<PrincipalDashboardScreen> {
       _ProfilePage(principal: widget.principal),
     ];
 
-    return Scaffold(
-      body: _pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.blue[600],
-        unselectedItemColor: Colors.grey[600],
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard),
-            label: 'Dashboard',
+    final base = Theme.of(context);
+    final plusJakartaTextTheme = GoogleFonts.plusJakartaSansTextTheme(base.textTheme);
+    final themed = base.copyWith(
+      textTheme: plusJakartaTextTheme.copyWith(
+        headlineLarge: plusJakartaTextTheme.headlineLarge?.copyWith(fontWeight: FontWeight.w600),
+        headlineMedium: plusJakartaTextTheme.headlineMedium?.copyWith(fontWeight: FontWeight.w600),
+        headlineSmall: plusJakartaTextTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600),
+        titleLarge: plusJakartaTextTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
+        titleMedium: plusJakartaTextTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+        titleSmall: plusJakartaTextTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600),
+        bodyLarge: plusJakartaTextTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w400),
+        bodyMedium: plusJakartaTextTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w400),
+        bodySmall: plusJakartaTextTheme.bodySmall?.copyWith(fontWeight: FontWeight.w400),
+        labelLarge: plusJakartaTextTheme.labelLarge?.copyWith(fontWeight: FontWeight.w500),
+        labelMedium: plusJakartaTextTheme.labelMedium?.copyWith(fontWeight: FontWeight.w500),
+        labelSmall: plusJakartaTextTheme.labelSmall?.copyWith(fontWeight: FontWeight.w500),
+      ),
+      appBarTheme: base.appBarTheme.copyWith(
+        titleTextStyle: GoogleFonts.plusJakartaSans(
+          textStyle: base.textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ) ??
+              const TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white),
+        ),
+      ),
+    );
+
+    return Theme(
+      data: themed,
+      child: Scaffold(
+        body: _pages[_selectedIndex],
+        bottomNavigationBar: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.admin_panel_settings),
-            label: 'Management',
+          child: BottomNavigationBar(
+            
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            backgroundColor: Colors.white60,
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: Colors.blue[600],
+            unselectedItemColor: Colors.grey[600],
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.dashboard),
+                label: 'Dashboard',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.admin_panel_settings),
+                label: 'Management',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Profile',
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -72,7 +112,14 @@ class _DashboardBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Principal Dashboard - ${principal.schoolName}'),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 12),
+          child: CircleAvatar(
+            backgroundColor: Colors.white,
+            child: Icon(Icons.person, color: Colors.blue[600]),
+          ),
+        ),
+        title: const Text('Principal Dashboard'),
         backgroundColor: Colors.blue[600],
         foregroundColor: Colors.white,
         elevation: 0,
@@ -129,7 +176,7 @@ class _DashboardBody extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            Row(
+            const Row(
               children: [
                 Expanded(
                   child: _StatCard(
@@ -139,7 +186,7 @@ class _DashboardBody extends StatelessWidget {
                     color: Colors.green,
                   ),
                 ),
-                const SizedBox(width: 16),
+                SizedBox(width: 16),
                 Expanded(
                   child: _StatCard(
                     title: 'Students',
@@ -151,7 +198,7 @@ class _DashboardBody extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 16),
-            Row(
+            const Row(
               children: [
                 Expanded(
                   child: _StatCard(
@@ -161,7 +208,7 @@ class _DashboardBody extends StatelessWidget {
                     color: Colors.orange,
                   ),
                 ),
-                const SizedBox(width: 16),
+                SizedBox(width: 16),
                 Expanded(
                   child: _StatCard(
                     title: 'Applications',
@@ -303,7 +350,7 @@ class _StatCard extends StatelessWidget {
             Text(
               title,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Colors.grey[600],
+                color: Colors.black,fontWeight: FontWeight.w600,
               ),
             ),
           ],
@@ -490,6 +537,19 @@ class _ProfilePage extends StatelessWidget {
         title: const Text('Profile'),
         backgroundColor: Colors.blue[600],
         foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout,color: Colors.white),
+            tooltip: 'Logout',
+            onPressed: () {
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                '/',
+                (route) => false,
+              );
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

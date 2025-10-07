@@ -60,7 +60,7 @@ class _StudentApplicationFormScreenState extends State<StudentApplicationFormScr
         foregroundColor: Colors.white,
         actions: [
           IconButton(
-            icon: const Icon(Icons.list),
+            icon: const Icon(Icons.question_mark_sharp),
             onPressed: _viewApplications,
             tooltip: 'View Applications',
           ),

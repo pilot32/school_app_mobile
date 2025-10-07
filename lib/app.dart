@@ -6,6 +6,7 @@ import 'features/dashboard/presentation/principal/principal_dashboard.dart';
 import 'features/dashboard/presentation/student/student_dashboard.dart';
 import 'features/dashboard/presentation/teacher/teacher_dashboard.dart';
 import 'features/core/teacher_provider.dart';
+import 'features/core/splash_screen.dart';
 import 'data/models/principal.dart';
 
 class MyApp extends StatelessWidget {
@@ -21,17 +22,18 @@ class MyApp extends StatelessWidget {
         title: 'Edu App',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
-        initialRoute: '/',
+        initialRoute: '/splash',
         routes: {
+          '/splash': (_) => const SplashScreen(),
           '/': (_) => const LoginScreen(),
           '/dashboard': (_) => const StudentDashboardScreen(),
           '/principal-dashboard': (_) => PrincipalDashboardScreen(
             principal: Principal(
               id: 'principal_001',
-              name: 'Dr. Sarah Johnson',
-              email: 'principal@school.com',
-              phone: '9876543210',
-              schoolName: 'Greenwood High School',
+              name: 'Dr. Aisha Verma',
+              email: 'principal@greenwood.edu',
+              phone: '+91-98123 45678',
+              schoolName: 'Greenwood International School',
               createdAt: DateTime.now().subtract(const Duration(days: 365)),
             ),
           ),

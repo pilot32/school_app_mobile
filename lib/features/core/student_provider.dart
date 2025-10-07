@@ -8,9 +8,9 @@ class StudentProvider extends ChangeNotifier {
   StudentProvider() {
     // 👇 TEMPORARY: preload a dummy logged-in student for testing
     _student = Student(
-      name: 'Test User',
+      name: 'Aarav Sharma',
       studentClass: 'Class 10-A',
-      rollNo: '0001',
+      rollNo: '001',
     );
   }
   //the red color shows its a temporary code from the start to end

@@ -154,25 +154,39 @@ class _LoginScreenState extends State<LoginScreen> {
                           children: [
                             Expanded(
                               child: OutlinedButton.icon(
+                                style:OutlinedButton.styleFrom(
+                            minimumSize: const Size(0,36),
+                              padding: const EdgeInsets.symmetric(horizontal: 4),
+                        ),
                                 onPressed: () => _demoLogin('principal'),
-                                icon: const Icon(Icons.admin_panel_settings),
-                                label: const Text('Principal'),
+                                icon: const Icon(Icons.admin_panel_settings,color: Colors.grey,),
+                                label: const Text('Principal',style: TextStyle(fontSize: 10,color: Colors.grey)),
                               ),
                             ),
-                            const SizedBox(width: 12),
+                            const SizedBox(width: 5),
                             Expanded(
                               child: OutlinedButton.icon(
+                                style:OutlinedButton.styleFrom(
+                                  minimumSize: const Size(0,36),
+                                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                                ),
                                 onPressed: () => _demoLogin('teacher'),
-                                icon: const Icon(Icons.person),
-                                label: const Text('Teacher'),
+                                icon: const Icon(Icons.person,color: Colors.grey,),
+                                label: const Text('Teacher',
+                                   style: TextStyle(fontSize: 10,color: Colors.grey),
+                                    ),
                               ),
                             ),
-                            const SizedBox(width: 12),
+                            const SizedBox(width: 5),
                             Expanded(
                               child: OutlinedButton.icon(
+                                style:OutlinedButton.styleFrom(
+                                  minimumSize: const Size(0,36),
+                                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                                ),
                                 onPressed: () => _demoLogin('student'),
-                                icon: const Icon(Icons.school),
-                                label: const Text('Student'),
+                                icon: const Icon(Icons.school,size: 10,color: Colors.grey,),
+                                label: const Text('Student',style: TextStyle(fontSize: 10,color: Colors.grey)),
                               ),
                             ),
                           ],
