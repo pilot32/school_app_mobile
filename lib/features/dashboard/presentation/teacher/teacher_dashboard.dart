@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:school_app_mvp/features/dashboard/presentation/teacher/assignmentscreen.dart';
 import '../../../../data/models/teacher.dart';
 import 'attendance_marking_screen.dart';
 import 'announcement_screen.dart';
@@ -520,11 +521,8 @@ class _DashboardBody extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => HomeworkAssignmentScreen(
-            subject: teacher.subjects.first,
-            targetClass: teacher.classes.first,
-            teacherId: teacher.id,
-            teacherName: teacher.name,
+          builder: (context) => AssignmentPage(
+
           ),
         ),
       );
@@ -658,11 +656,7 @@ class _ClassesPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => HomeworkAssignmentScreen(
-                    subject: teacher.subjects.first,
-                    targetClass: className,
-                    teacherId: teacher.id,
-                    teacherName: teacher.name,
+                  builder: (context) => AssignmentPage(
                   ),
                 ),
               );

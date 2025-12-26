@@ -21,10 +21,11 @@
 /// await controller.updateAssignment(id, {'title': 'New Title'});
 /// ```
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import '../../../../../data/models/assignment.dart';
 import '../apiService/api_assignment.dart';
 import '../apiService/teacher_assignment_api_provider.dart';
-import '../model/model_Assignment.dart';
+import '../../../../../models/model_Assignment.dart';
 
 /// State class for assignment controller
 class AssignmentState {
