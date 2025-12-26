@@ -1,29 +1,30 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../apiService//api_assignment.dart';
 import '../model/model_Assignment.dart';
-import '../../../../../data/models/teacher_assignment.dart';
-import 'teacher_assignment_api_provider.dart';
+import 'assignment_controller.dart';
 
+/// Legacy provider for backward compatibility
+/// This now uses the new AssignmentController
+/// Consider migrating to assignmentControllerProvider directly
+@Deprecated('Use assignmentControllerProvider instead')
 final createAssignmentProvider =
-StateNotifierProvider<CreateAssignmentNotifier,
-    AsyncValue<TeacherAssignment?>>((ref) {
-  final api = ref.read(teacherAssignmentApiProvider);
-  return CreateAssignmentNotifier(api);
+    StateNotifierProvider<CreateAssignmentNotifier, AsyncValue<bool>>((ref) {
+  final controller = ref.watch(assignmentControllerProvider.notifier);
+  return CreateAssignmentNotifier(controller);
 });
 
+@Deprecated('Use AssignmentController instead')
 class CreateAssignmentNotifier
-    extends StateNotifier<AsyncValue<TeacherAssignment?>> {
-  final TeacherAssignmentAPI api;
+    extends StateNotifier<AsyncValue<bool>> {
+  final AssignmentController controller;
 
-  CreateAssignmentNotifier(this.api)
-      : super(const AsyncData(null));
+  CreateAssignmentNotifier(this.controller)
+      : super(const AsyncData(false));
 
-  Future<void> createAssignment(
-      CreateAssignmentPayload payload) async {
+  Future<void> createAssignment(CreateAssignmentPayload payload) async {
     state = const AsyncLoading();
     try {
-      final assignment = await api.createAssignment(payload);
-      state = AsyncData(assignment);
+      final success = await controller.createAssignment(payload);
+      state = AsyncData(success);
     } catch (e, st) {
       state = AsyncError(e, st);
     }
