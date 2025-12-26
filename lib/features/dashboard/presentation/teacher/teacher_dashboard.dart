@@ -4,7 +4,7 @@ import '../../../../data/models/teacher.dart';
 import 'attendance_marking_screen.dart';
 import 'announcement_screen.dart';
 import 'marks_management_screen.dart';
-import 'homework_assignment_screen.dart';
+//import 'homework_assignment_screen.dart';
 import 'classwork_update_screen.dart';
 import 'substitute_request_screen.dart';
 
