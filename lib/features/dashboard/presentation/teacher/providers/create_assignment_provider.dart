@@ -1,5 +1,7 @@
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../model/model_Assignment.dart';
+import 'package:flutter_riverpod/legacy.dart';
+import '../../../../../models/model_Assignment.dart';
 import 'assignment_controller.dart';
 
 /// Legacy provider for backward compatibility

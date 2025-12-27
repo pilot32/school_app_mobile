@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import '../../../../../data/models/assignment.dart';
-import '../model/model_Assignment.dart';
+import '../../../../../models/model_Assignment.dart';
 
 /// Custom exception for API errors with HTTP status codes
 class AssignmentApiException implements Exception {
@@ -25,6 +25,7 @@ class TeacherAssignmentAPI {
   /// Create a new assignment
   /// POST /api/teacher/assignments
   /// Returns 201 on success
+  /// //----------------------------STEP-1---------------------------------------------------------------
   Future<Assignment> createAssignment(
       CreateAssignmentPayload payload) async {
     try {
@@ -51,7 +52,7 @@ class TeacherAssignmentAPI {
       );
     }
   }
-
+///----------------------------STEP-2---------------------------------------------------------------
   /// Update an assignment
   /// PATCH /api/teacher/assignments/:id
   /// Returns 200 on success
@@ -82,6 +83,7 @@ class TeacherAssignmentAPI {
       );
     }
   }
+///----------------------------STEP-3---------------------------------------------------------------
 
   /// Publish an assignment
   /// PATCH /api/teacher/assignments/:id/publish
@@ -117,6 +119,7 @@ class TeacherAssignmentAPI {
       );
     }
   }
+///----------------------------STEP-4---------------------------------------------------------------
 
   /// Archive an assignment
   /// PATCH /api/teacher/assignments/:id/archive
@@ -144,6 +147,7 @@ class TeacherAssignmentAPI {
       );
     }
   }
+///----------------------------STEP-5---------------------------------------------------------------
 
   /// Delete an assignment
   /// DELETE /api/teacher/assignments/:id
@@ -172,7 +176,7 @@ class TeacherAssignmentAPI {
       );
     }
   }
-
+///-------------------------------------------STEP-6---------------------------------------------------------------
   /// Get list of assignments with filters and pagination
   /// GET /api/teacher/assignments
   /// Returns 200 on success
@@ -231,6 +235,7 @@ class TeacherAssignmentAPI {
       );
     }
   }
+///----------------------------STEP-7---------------------------------------------------------------
 
   /// Get assignment detail by ID
   /// GET /api/teacher/assignments/:id
