@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:school_app_mvp/features/dashboard/presentation/teacher/assignmentscreen.dart';
+import 'package:school_app_mvp/features/dashboard/presentation/teacher/assignment_create_screen.dart';
 import '../../../../data/models/teacher.dart';
+import 'assignments_main.dart';
 import 'attendance_marking_screen.dart';
 import 'announcement_screen.dart';
 import 'marks_management_screen.dart';
@@ -521,7 +522,7 @@ class _DashboardBody extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => AssignmentPage(
+          builder: (context) => AssignmentMainPage(
 
           ),
         ),
@@ -656,7 +657,7 @@ class _ClassesPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => AssignmentPage(
+                  builder: (context) => const AssignmentMainPage(
                   ),
                 ),
               );
