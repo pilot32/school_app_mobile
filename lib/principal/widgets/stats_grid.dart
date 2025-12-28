@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:school_app_mvp/features/dashboard/presentation/principal/widgets/stat_card.dart';
+import './stat_card.dart';
 //import 'stat_card.dart';
 
 class StatsGrid extends StatelessWidget {

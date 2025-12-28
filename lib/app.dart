@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:school_app_mvp/principal/principal_dashboard.dart';
+import 'package:school_app_mvp/student/student_dashboard.dart';
+import 'package:school_app_mvp/teacher/teacher_dashboard.dart';
 import 'package:school_app_mvp/theme/app_theme.dart';
-import 'features/auth/presentation/login_screen.dart';
-import 'features/dashboard/presentation/principal/principal_dashboard.dart';
-import 'features/dashboard/presentation/student/student_dashboard.dart';
-import 'features/dashboard/presentation/teacher/teacher_dashboard.dart';
-import 'features/core/teacher_provider.dart';
-import 'features/core/splash_screen.dart';
+import 'auth/screens/login_screen.dart';
+import 'core/teacher_provider.dart';
+import 'splash_screen.dart';
 import 'data/models/principal.dart';
 
 class MyApp extends StatelessWidget {

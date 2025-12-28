@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-import 'package:school_app_mvp/features/dashboard/presentation/student/widgets/overal_attnd_card.dart';
+import 'widgets/overal_attnd_card.dart';
 
 class AttendanceScreen extends StatefulWidget {
   const AttendanceScreen({super.key});

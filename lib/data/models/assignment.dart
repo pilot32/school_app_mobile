@@ -1,5 +1,6 @@
 /// Assignment model matching backend DTO structure
 /// Based on toTeacherAssignmentDetailDTO from backend utils/assignment.js
+/// model for creating asn assignment
 class Assignment {
   final String id;
   final String title;
@@ -115,6 +116,7 @@ class Assignment {
 }
 
 /// Section info from backend DTO
+/// when viewing the assignment there is need for section selection which will ave these fields
 class SectionInfo {
   final String id;
   final String? name;
@@ -137,6 +139,7 @@ class SectionInfo {
 }
 
 /// Subject info from backend DTO
+/// section selection time will have these fields which will require this
 class SubjectInfo {
   final String id;
   final String? name;
@@ -159,6 +162,7 @@ class SubjectInfo {
 }
 
 /// Assignment list item (lighter version for list views)
+/// same as assignment creation list this will return the list when fetched from backend
 class AssignmentListItem {
   final String id;
   final String title;

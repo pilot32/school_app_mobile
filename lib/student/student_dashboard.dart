@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:school_app_mvp/features/dashboard/presentation/student/student_app_bar.dart';
-import 'package:school_app_mvp/features/dashboard/presentation/student/student_class_activity.dart';
-import 'package:school_app_mvp/features/dashboard/presentation/student/student_profile.dart';
-import 'package:school_app_mvp/features/dashboard/presentation/student/widgets/bottom_nav_bar.dart';
-import 'package:school_app_mvp/features/dashboard/presentation/student/widgets/date_time_display.dart';
-import 'package:school_app_mvp/features/dashboard/presentation/student/widgets/quick_options_subjects.dart';
+import 'package:school_app_mvp/student/student_app_bar.dart';
+import 'package:school_app_mvp/student/student_class_activity.dart';
+import 'package:school_app_mvp/student/student_profile.dart';
+import 'package:school_app_mvp/student/widgets/bottom_nav_bar.dart';
+import 'package:school_app_mvp/student/widgets/date_time_display.dart';
+import 'package:school_app_mvp/student/widgets/quick_options_subjects.dart';
+import 'package:school_app_mvp/theme/student_theme.dart';
+// import 'package:school_app_mvp/features/dashboard/presentation/student/student_app_bar.dart';
+// import 'package:school_app_mvp/features/dashboard/presentation/student/student_class_activity.dart';
+// import 'package:school_app_mvp/features/dashboard/presentation/student/student_profile.dart';
+// import 'package:school_app_mvp/features/dashboard/presentation/student/widgets/bottom_nav_bar.dart';
+// import 'package:school_app_mvp/features/dashboard/presentation/student/widgets/date_time_display.dart';
+// import 'package:school_app_mvp/features/dashboard/presentation/student/widgets/quick_options_subjects.dart';
 import '../../../../data/models/student.dart';
 import '../../../core/student_provider.dart';
 import 'announcements_page.dart';
@@ -26,6 +33,7 @@ class _StudentDashboardScreenState extends State<StudentDashboardScreen> {
     if(index==2){
       // open the profile screen instead of switching tab
       Navigator.of(context).push(
+
         MaterialPageRoute(builder: (_) => const StudentProfileScreen()),
       );
       return; // don't change _selectedIndex
@@ -46,6 +54,7 @@ class _StudentDashboardScreenState extends State<StudentDashboardScreen> {
 
 
     return Scaffold(
+      backgroundColor: AppColors.scaffold,
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavBar(
         currentIndex: _selectedIndex,
@@ -204,13 +213,13 @@ class _DemoCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.white, borderRadius: BorderRadius.circular(12),
+        color: AppColors.card, borderRadius: BorderRadius.circular(12),
         boxShadow: const [BoxShadow(color: Color(0x11000000), blurRadius: 6)],
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(title, style: const TextStyle(color: Colors.black54,fontWeight: FontWeight.bold)),
+        Text(title, style: const TextStyle(color: AppColors.textSecondary,fontWeight: FontWeight.bold)),
         const SizedBox(height: 6),
-        Text(value, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        Text(value, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.textPrimary)),
       ]),
     );
   }
@@ -226,8 +235,8 @@ class _ScheduleSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          const Text('Today\'s Schedule', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
-          TextButton(onPressed: () { /* 📌 Backend: open full timetable */ }, child: const Text('View all')),
+          const Text('Today\'s Schedule', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: AppColors.textPrimary)),
+          TextButton(onPressed: () { /* 📌 Backend: open full timetable */ }, child: const Text('View all', style: TextStyle(color: AppColors.primaryDark))),
         ]),
         const SizedBox(height: 8),
         Column(
@@ -264,22 +273,22 @@ class _ScheduleCard extends StatelessWidget {
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.card,
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: const Color(0xFFE6E9EE)),
+          border: Border.all(color: AppColors.divider),
           boxShadow: const [BoxShadow(color: Color(0x11000000), blurRadius: 6)],
         ),
         child: Row(
           children: [
             Expanded(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                Text(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.textPrimary)),
                 const SizedBox(height: 6),
-                Text(room, style: const TextStyle(color: Colors.black54)),
+                Text(room, style: const TextStyle(color: AppColors.textSecondary)),
               ]),
             ),
             Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-              Text(time, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+              Text(time, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: AppColors.primaryDark)),
             ]),
           ],
         ),
@@ -301,14 +310,14 @@ class _QuickAction extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.card,
             borderRadius: BorderRadius.circular(10),
             boxShadow: const [BoxShadow(color: Color(0x11000000), blurRadius: 4)],
           ),
-          child: Icon(icon),
+          child: Icon(icon, color: AppColors.primaryDark),
         ),
         const SizedBox(height: 6),
-        Text(label, style: const TextStyle(fontSize: 12)),
+        Text(label, style: const TextStyle(fontSize: 12, color: AppColors.textPrimary)),
       ]),
     );
   }
@@ -329,7 +338,7 @@ class _AnnouncementSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text('Announcements',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600,)),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: AppColors.textPrimary)),
             //SizedBox(width: 60),
             Align(
               alignment: Alignment.centerRight,
@@ -343,7 +352,7 @@ class _AnnouncementSection extends StatelessWidget {
                   );
                 },
 
-                child: const Text('See all'),
+                child: const Text('See all', style: TextStyle(color: AppColors.primaryDark)),
               ),
             ),
           ],
@@ -398,10 +407,10 @@ class _AnnouncementCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.card,
           //  moved borderRadius here from Material widget
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: const Color(0xFFE6E9EE)),
+          border: Border.all(color: AppColors.divider),
           //  moved shadow here from Material widget - now shadow respects borderRadius
           boxShadow: const [
             BoxShadow(
@@ -420,6 +429,7 @@ class _AnnouncementCard extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 // CHANGE 4: Added explicit fontSize for better control
                 fontSize: 16,
+                color: AppColors.textPrimary,
               ),
               // CHANGE 5: Added text constraints to prevent overflow
               maxLines: 1,
@@ -429,7 +439,7 @@ class _AnnouncementCard extends StatelessWidget {
             Text(
               body,
               style: const TextStyle(
-                color: Colors.black54,
+                color: AppColors.textSecondary,
                 // CHANGE 6: Added explicit fontSize for consistency
                 fontSize: 14,
               ),
