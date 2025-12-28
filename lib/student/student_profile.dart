@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:school_app_mvp/features/dashboard/presentation/student/student_dashboard.dart';
+import 'student_dashboard.dart';
 
 import '../../../core/student_provider.dart';
 

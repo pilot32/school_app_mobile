@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:school_app_mvp/features/dashboard/presentation/student/student_app_bar.dart';
-import 'package:school_app_mvp/features/dashboard/presentation/student/student_class_activity.dart';
-import 'package:school_app_mvp/features/dashboard/presentation/student/student_profile.dart';
-import 'package:school_app_mvp/features/dashboard/presentation/student/widgets/bottom_nav_bar.dart';
-import 'package:school_app_mvp/features/dashboard/presentation/student/widgets/date_time_display.dart';
-import 'package:school_app_mvp/features/dashboard/presentation/student/widgets/quick_options_subjects.dart';
+import 'package:school_app_mvp/student/student_app_bar.dart';
+import 'package:school_app_mvp/student/student_class_activity.dart';
+import 'package:school_app_mvp/student/student_profile.dart';
+import 'package:school_app_mvp/student/widgets/bottom_nav_bar.dart';
+import 'package:school_app_mvp/student/widgets/date_time_display.dart';
+import 'package:school_app_mvp/student/widgets/quick_options_subjects.dart';
+// import 'package:school_app_mvp/features/dashboard/presentation/student/student_app_bar.dart';
+// import 'package:school_app_mvp/features/dashboard/presentation/student/student_class_activity.dart';
+// import 'package:school_app_mvp/features/dashboard/presentation/student/student_profile.dart';
+// import 'package:school_app_mvp/features/dashboard/presentation/student/widgets/bottom_nav_bar.dart';
+// import 'package:school_app_mvp/features/dashboard/presentation/student/widgets/date_time_display.dart';
+// import 'package:school_app_mvp/features/dashboard/presentation/student/widgets/quick_options_subjects.dart';
 import '../../../../data/models/student.dart';
 import '../../../core/student_provider.dart';
 import 'announcements_page.dart';
@@ -26,6 +32,7 @@ class _StudentDashboardScreenState extends State<StudentDashboardScreen> {
     if(index==2){
       // open the profile screen instead of switching tab
       Navigator.of(context).push(
+
         MaterialPageRoute(builder: (_) => const StudentProfileScreen()),
       );
       return; // don't change _selectedIndex

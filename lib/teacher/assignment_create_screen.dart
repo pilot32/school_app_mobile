@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:school_app_mvp/features/dashboard/presentation/teacher/providers/assignment_controller.dart';
+import 'providers/assignment_controller.dart';
 import '../../../../../data/models/assignment.dart';
 import '../../../../models/model_Assignment.dart';
 //import '../apiService/api_assignment.dart';
