@@ -117,40 +117,46 @@ class StudentProfileScreen extends StatelessWidget {
                         radius: 50,
                         backgroundColor: Colors.grey[200],
                         child: ClipOval(
-                          child: Image.network(
-                            studentData["profileImage"],
+                          // child: Image.network(
+                          //   studentData["profileImage"],
+                          //   width: 100,
+                          //   height: 100,
+                          //   fit: BoxFit.cover,
+                          //   errorBuilder: (context, error, stackTrace) {
+                          //     return Container(
+                          //       width: 100,
+                          //       height: 100,
+                          //       color: Colors.grey[300],
+                          //       child: Icon(
+                          //         Icons.person,
+                          //         size: 50,
+                          //         color: Colors.grey[600],
+                          //       ),
+                          //     );
+                          //   },
+                          //   loadingBuilder: (context, child, loadingProgress) {
+                          //     if (loadingProgress == null) return child;
+                          //     return Container(
+                          //       width: 100,
+                          //       height: 100,
+                          //       color: Colors.grey[200],
+                          //       child: Center(
+                          //         child: CircularProgressIndicator(
+                          //           value: loadingProgress.expectedTotalBytes != null
+                          //               ? loadingProgress.cumulativeBytesLoaded /
+                          //                   loadingProgress.expectedTotalBytes!
+                          //               : null,
+                          //           strokeWidth: 2,
+                          //         ),
+                          //       ),
+                          //     );
+                          //   },
+                          // ),
+                          child: Image.asset(
+                            'assets/images/student_male_avatar.png',
                             width: 100,
                             height: 100,
                             fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) {
-                              return Container(
-                                width: 100,
-                                height: 100,
-                                color: Colors.grey[300],
-                                child: Icon(
-                                  Icons.person,
-                                  size: 50,
-                                  color: Colors.grey[600],
-                                ),
-                              );
-                            },
-                            loadingBuilder: (context, child, loadingProgress) {
-                              if (loadingProgress == null) return child;
-                              return Container(
-                                width: 100,
-                                height: 100,
-                                color: Colors.grey[200],
-                                child: Center(
-                                  child: CircularProgressIndicator(
-                                    value: loadingProgress.expectedTotalBytes != null
-                                        ? loadingProgress.cumulativeBytesLoaded /
-                                            loadingProgress.expectedTotalBytes!
-                                        : null,
-                                    strokeWidth: 2,
-                                  ),
-                                ),
-                              );
-                            },
                           ),
                         ),
                       ),
