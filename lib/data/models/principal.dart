@@ -1,43 +1,86 @@
-class Principal {
+class PrincipalSchool {
   final String id;
   final String name;
-  final String email;
-  final String phone;
-  final String? profileImageUrl;
-  final String schoolName;
-  final DateTime createdAt;
+  final String? code;
 
-  Principal({
+  PrincipalSchool({
     required this.id,
     required this.name,
-    required this.email,
-    required this.phone,
-    this.profileImageUrl,
-    required this.schoolName,
-    required this.createdAt,
+    this.code,
   });
 
-  factory Principal.fromJson(Map<String, dynamic> json) {
-    return Principal(
-      id: json['id'] ?? '',
+  factory PrincipalSchool.fromJson(Map<String, dynamic> json) {
+    return PrincipalSchool(
+      id: json['_id'] ?? json['id'] ?? '',
       name: json['name'] ?? '',
-      email: json['email'] ?? '',
-      phone: json['phone'] ?? '',
-      profileImageUrl: json['profile_image_url'],
-      schoolName: json['school_name'] ?? '',
-      createdAt: DateTime.parse(json['created_at']),
+      code: json['code'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
+      '_id': id,
       'name': name,
-      'email': email,
-      'phone': phone,
-      'profile_image_url': profileImageUrl,
-      'school_name': schoolName,
-      'created_at': createdAt.toIso8601String(),
+      if (code != null) 'code': code,
     };
   }
+}
+
+class Principal {
+  final String id;
+  final String username;
+  final String email;
+  final String fullName;
+  final bool isActive;
+  final PrincipalSchool? school;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+
+  Principal({
+    required this.id,
+    required this.username,
+    required this.email,
+    required this.fullName,
+    this.isActive = true,
+    this.school,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+
+  factory Principal.fromJson(Map<String, dynamic> json) {
+    return Principal(
+      id: json['_id'] ?? json['id'] ?? '',
+      username: json['username'] ?? '',
+      email: json['email'] ?? '',
+      fullName: json['fullName'] ?? '',
+      isActive: json['isActive'] ?? true,
+      school: json['school'] != null
+          ? PrincipalSchool.fromJson(json['school'])
+          : null,
+      createdAt: json['createdAt'] != null
+          ? DateTime.parse(json['createdAt'])
+          : DateTime.now(),
+      updatedAt: json['updatedAt'] != null
+          ? DateTime.parse(json['updatedAt'])
+          : DateTime.now(),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      '_id': id,
+      'username': username,
+      'email': email,
+      'fullName': fullName,
+      'isActive': isActive,
+      if (school != null) 'school': school!.toJson(),
+      'createdAt': createdAt.toIso8601String(),
+      'updatedAt': updatedAt.toIso8601String(),
+    };
+  }
+
+  // Helper getters for backward compatibility
+  String get name => fullName;
+  String get schoolName => school?.name ?? '';
+  String get phone => ''; // Phone not available in backend model
 }
