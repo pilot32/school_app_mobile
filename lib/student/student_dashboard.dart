@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:school_app_mvp/student/fees_page.dart';
 import 'package:school_app_mvp/student/student_app_bar.dart';
 import 'package:school_app_mvp/student/student_class_activity.dart';
 import 'package:school_app_mvp/student/student_profile.dart';
@@ -184,9 +185,13 @@ class _DashboardBody extends StatelessWidget {
                                 MaterialPageRoute(builder: (_)=>const ClassroomMvpScreen()));
                           })),
                       const SizedBox(width: 10),
-                      // Expanded(
-                      //     child: _QuickAction(
-                      //         icon: Icons.question_answer, label: 'Ask Doubt', onTap: () {})),
+                      Expanded(
+                          child: _QuickAction(
+                              icon: Icons.question_answer, label: 'Ask Doubt', onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (_)=> const FeesScreen())
+                                );
+                          })),
                     ],
                   ),
                   const SizedBox(height: 40),
