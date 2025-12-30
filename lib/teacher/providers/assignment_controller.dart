@@ -22,10 +22,10 @@
 /// ```
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
-import '../../../../../data/models/assignment.dart';
+import '../../../../../data/models/TeacherAssignmentResponse.dart';
 import '../apiService/api_assignment.dart';
 import '../apiService/teacher_assignment_api_provider.dart';
-import '../../../../../models/model_Assignment.dart';
+import '../../data/models/create_Assignment_payload.dart';
 
 /// State class for assignment controller
 class AssignmentState {

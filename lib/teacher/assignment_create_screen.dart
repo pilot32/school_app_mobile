@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'providers/assignment_controller.dart';
-import '../../../../../data/models/assignment.dart';
-import '../../../../models/model_Assignment.dart';
+import '../../../../../data/models/TeacherAssignmentResponse.dart';
+import '../data/models/create_Assignment_payload.dart';
 //import '../apiService/api_assignment.dart';
 
 class AssignmentPage extends ConsumerStatefulWidget {

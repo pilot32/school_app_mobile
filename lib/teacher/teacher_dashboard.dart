@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 //import 'package:school_app_mvp/features/dashboard/presentation/teacher/assignment_create_screen.dart';
 import '../../../../data/models/teacher.dart';
-import 'assignments_main.dart';
+import 'assignments_screen.dart';
 import 'attendance_marking_screen.dart';
 import 'announcement_screen.dart';
 import 'marks_management_screen.dart';
