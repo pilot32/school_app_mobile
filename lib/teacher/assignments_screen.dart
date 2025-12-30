@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'providers/assignment_controller.dart';
-import '../../../../../models/model_Assignment.dart';
-import '../../../../data/models/assignment.dart';
+import '../data/models/create_Assignment_payload.dart';
+import '../../../../data/models/TeacherAssignmentResponse.dart';
 import './assignment_create_screen.dart'; // Adjust path as needed
 
 class AssignmentMainPage extends ConsumerStatefulWidget {

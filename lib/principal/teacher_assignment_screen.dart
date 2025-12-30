@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../data/models/principal.dart';
 import '../../../../data/models/teacher.dart';
-import '../data/models/teacher_assignment.dart';
+import '../data/models/TeacherAssignmentCreation.dart';
 import '../../../../data/models/section.dart';
 import '../../../../data/models/class_model.dart';
 

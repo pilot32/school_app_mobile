@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import '../../../../../data/models/assignment.dart';
-import '../../../../../models/model_Assignment.dart';
+import '../../../../../data/models/TeacherAssignmentResponse.dart';
+import '../../data/models/create_Assignment_payload.dart';
 
 /// Custom exception for API errors with HTTP status codes
 class AssignmentApiException implements Exception {
